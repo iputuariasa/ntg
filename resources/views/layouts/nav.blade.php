@@ -38,7 +38,12 @@
         <div x-show="isOpen" @click.away="isOpen = false" @keydown.escape="isOpen = false" x-ref="userMenu" tabindex="-1" class="absolute w-48 py-1 mt-2 origin-bottom-left bg-white rounded-md shadow-lg left-10 bottom-14 focus:outline-none" role="menu" aria-orientation="vertical" aria-label="user menu">
           <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Profil</a>
           <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Pengaturan</a>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Keluar</a>
+          <form action="/logout" method="post" class="w-full text-start">
+            @csrf
+            <button type="submit" class="text-start w-full block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+              Keluar
+            </button>
+          </form>
         </div>
       </div>
     </nav>
@@ -91,7 +96,13 @@
         <div x-show="isOpen" @click.away="isOpen = false" @keydown.escape="isOpen = false" x-ref="userMenu" tabindex="-1" class="absolute w-48 py-1 mt-2 origin-bottom-left  bg-white rounded-md shadow-lg left-10 bottom-14 focus:outline-none" role="menu" aria-orientation="vertical" aria-label="user menu">
           <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Profil</a>
           <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Pengaturan</a>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Keluar</a>
+          <form action="/logout" method="post" class="w-full text-start">
+            @csrf
+            <button type="submit" class="text-start w-full block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+              Keluar
+            </button>
+          </form>
+          {{-- <a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Keluar</a> --}}
         </div>
       </div>
     </nav>
