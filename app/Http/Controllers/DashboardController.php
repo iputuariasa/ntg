@@ -12,7 +12,11 @@ class DashboardController extends Controller
 
         if ($role == 'user') {
             return view('users.index');
-        } else {
+        } 
+        elseif ($role == 'cs'){
+            return view('cs.index');
+        }
+        else {
             return view('index');  // or other role views
         }
     }

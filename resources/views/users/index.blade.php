@@ -11,7 +11,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
     body {
-      background: linear-gradient(135deg, #A0DEFF 0%, #A0DEFF 100%);
+      /* background: linear-gradient(135deg, #A0DEFF 0%, #A0DEFF 100%); */
       min-height: 100vh;
       margin: 0;
       font-family: sans-serif;
@@ -33,7 +33,7 @@
               <i class="fa-solid fa-bell text-2xl"></i>
             </button>
             <button type="button" @click="open = ! open" class="w-9 h-9 flex items-center justify-center rounded-md text-gray-700">
-              <img src="img/iconuser.png" alt="">
+              <img src="assets/images/user.png" alt="" class="rounded-full">
             </button>
           </div>
         </nav>
@@ -42,17 +42,22 @@
       {{-- Profile Card --}}
       <div class="fixed top-16 z-50 right-7 bg-gradient-to-r from-sky-300 to-slate-50 shadow-md w-64 h-auto rounded-xl" x-show="open" @click.outside="open = false" x-transition.duration.500ms>
         <div class="w-full h-24 flex justify-center items-center mt-4 flex-col">
-          <img src="img/iconuser.png" alt="" class="w-fit">
+          <img src="assets/images/user.png" alt="" class="w-20 rounded-full">
           <span class="font-semibold">Arik Arnawa</span>
         </div>
         <div class="w-full flex justify-center items-center mt-5 mb-5">
           <a href="" class="bg-blue-700 w-1/2 ms-4 me-2 p-1 rounded-md text-white text-center">Profil</a>
-          <a href="" class="bg-red-700 w-1/2 ms-2 me-4 p-1 rounded-md text-white text-center">Keluar</a>
+          <form action="/logout" method="post" class="w-full text-start">
+            @csrf
+            <button type="submit" class="bg-red-700 w-1/2 ms-4 me-2 p-1 rounded-md text-white text-center" role="menuitem">
+              Keluar
+            </button>
+          </form>
         </div>
       </div>
 
       <div class="px-6 pt-20 lg:px-8">
-        <h1 class="font-bold">Portofolio Balance</h1>
+        <h1 class="font-bold">Insentif</h1>
         <h1 class="font-bold text-2xl">Rp5.000.000</h1>
       </div>
     </div>
@@ -64,18 +69,18 @@
           <div class="flex flex-col w-full h-full justify-center items-center">
             <div class="flex flex-col justify-center items-center -mt-3">
               <i class="fa-solid fa-server text-blue-700 text-lg"></i>
-              <span class="font-semibold text-md text-slate-600">Database</span>
+              <span class="font-semibold text-md text-slate-600">Permohonan</span>
             </div>
-            <span class="text-4xl font-extrabold text-slate-800">543</span>
+            <span class="text-4xl font-extrabold text-slate-800">5430</span> Juta
           </div>
         </div>
         <div class="ballpoint -ms-5">
           <div class="flex flex-col w-full h-full justify-center items-center">
             <div class="flex flex-col justify-center items-center -mt-3">
               <i class="fa-solid fa-file-powerpoint text-blue-700 text-lg"></i>
-              <span class="font-semibold text-md text-slate-600">Point</span>
+              <span class="font-semibold text-md text-slate-600">Debitur</span>
             </div>
-            <span class="text-4xl font-extrabold text-slate-800">54</span>
+            <span class="text-4xl font-extrabold text-slate-800">54</span>Orang
           </div>
         </div>
       </div>
@@ -83,37 +88,37 @@
 
     {{-- Menu --}}
     <div class="relative isolate px-6 mt-10 lg:px-8">
-      <div class="bg-white p-3 rounded-2xl border-solid border-2 border-slate-200">
+      <div class="p-3 rounded-2xl border-solid border-2 border-slate-200" style="background-color: #1b75bc">
         <div class="flex justify-between">
-          <span class="font-semibold text-lg">Menu</span>
+          <span class="font-semibold text-lg text-white">Menu</span>
           <div>
-            <span class="font-semibold text-lg">16-Jun-2024</span>
+            <span class="font-semibold text-lg text-white">16-Jun-2024</span>
           </div>
         </div>
         <div style="height: 0.5px" class="w-full bg-slate-300 mt-1 mb-3"></div>
         <div class="flex justify-around">
           <a href="" class="w-16 h-16 flex justify-center items-center">
             <div class="flex flex-col justify-center items-center">
-              <i class="fa-solid fa-circle-plus text-3xl text-slate-900"></i>
-              <span class="text-sm text-slate-600">Tambah</span>
+              <i class="fa-solid fa-circle-plus text-3xl text-white"></i>
+              <span class="text-sm text-slate-50">Tambah</span>
             </div>
           </a>
           <a href="" class="w-16 h-16 flex justify-center items-center">
             <div class="flex flex-col justify-center items-center">
-              <i class="fa-solid fa-paper-plane text-3xl text-slate-900"></i>
-              <span class="text-sm text-slate-600">Ajukan</span>
+              <i class="fa-solid fa-paper-plane text-3xl text-white"></i>
+              <span class="text-sm text-slate-50">Ajukan</span>
             </div>
           </a>
           <a href="" class="w-16 h-16 flex justify-center items-center">
             <div class="flex flex-col justify-center items-center">
-              <i class="fa-solid fa-eye text-3xl text-slate-900"></i>
-              <span class="text-sm text-slate-600">Data</span>
+              <i class="fa-solid fa-eye text-3xl text-white"></i>
+              <span class="text-sm text-slate-50">Data</span>
             </div>
           </a>
           <a href="" class="w-16 h-16 flex justify-center items-center">
             <div class="flex flex-col justify-center items-center">
-              <i class="fa-solid fa-street-view text-3xl text-slate-900"></i>
-              <span class="text-sm text-slate-600">Kunjungan</span>
+              <i class="fa-solid fa-street-view text-3xl text-white"></i>
+              <span class="text-sm text-slate-50">Kunjungan</span>
             </div>
           </a>
         </div>

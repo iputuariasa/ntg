@@ -40,6 +40,16 @@ class DatabaseSeeder extends Seeder
         User::create([
             'branches_id' => 1,
             'incentive_id' => 2,
+            'role' => 'cs',
+            'name' => 'Purnama Dewi',
+            'position' => 'CS Pusat',
+            'username' => 'cs1',
+            'password' => bcrypt('12345')
+        ]);
+
+        User::create([
+            'branches_id' => 1,
+            'incentive_id' => 2,
             'role' => 'user',
             'name' => 'Arik Arnawa',
             'position' => 'AO Pusat',

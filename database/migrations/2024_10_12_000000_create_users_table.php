@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('branches_id')->references('id')->on('branches')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('incentive_id')->references('id')->on('incentives')->onDelete('cascade')->onUpdate('cascade');
-            $table->enum('role',['admin', 'operator', 'user']);
+            $table->enum('role',['admin', 'operator', 'cs', 'user']);
             $table->string('name');
             $table->string('position');
             $table->string('username')->unique();
