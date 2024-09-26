@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CscreditController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +27,7 @@ Route::middleware(['auth'])->group(function(){
 });
 
 Route::middleware(['admin'])->group(function(){
-    
+    Route::get('/admins/users', [UserController::class, 'index']);
 });
 
 Route::middleware(['operator'])->group(function(){
@@ -33,9 +35,9 @@ Route::middleware(['operator'])->group(function(){
 });
 
 Route::middleware(['cs'])->group(function(){
-    
+    Route::get('/submission', [CscreditController::class, 'submissionindex']);
 });
 
 Route::middleware(['user'])->group(function(){
-    
+    Route::get('/create_submission', [CscreditController::class, 'submissioncreate']);
 });

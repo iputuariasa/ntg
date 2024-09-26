@@ -58,33 +58,47 @@
       </div>
       <div class="flex flex-col items-center flex-1 p-2 space-y-4">
         <!-- Chart button -->
-        <button class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2 flex justify-center items-center">
+        <a href="/" class="{{ Request::is('/') ? 'active' : '' }} p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2 flex justify-center items-center">
           <span class="sr-only">Toggle sidebar</span>
           <i class="fa-solid fa-chart-line text-xl mx-1" style="padding: 2px"></i>
-        </button>
+        </a>
 
         <!-- Panel button -->
-        <button @click="(isSidebarOpen && currentSidebarTab == 'panelTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'panelTab'" class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2 flex justify-center items-center" :class="(isSidebarOpen && currentSidebarTab == 'panelTab') ? 'text-white bg-primary' : 'text-gray-500 bg-white'">
+        <button 
+          @click="(isSidebarOpen && currentSidebarTab == 'panelTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'panelTab'"
+          :class="(isSidebarOpen && currentSidebarTab == 'panelTab') ? 'text-white bg-primary active' : '{{ Request::is('panels*') ? 'active' : '' }}'"
+          class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2">
           <span class="sr-only">Toggle sidebar</span>
           <i class="fa-solid fa-sliders text-xl mx-1" style="padding: 2px"></i>
         </button>
 
         <!-- Reports button -->
-        <button @click="(isSidebarOpen && currentSidebarTab == 'reportTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'reportTab'" class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2" :class="(isSidebarOpen && currentSidebarTab == 'reportTab') ? 'text-white bg-primary' : 'text-gray-500 bg-white'">
+        <button 
+          @click="(isSidebarOpen && currentSidebarTab == 'reportTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'reportTab'"
+          :class="(isSidebarOpen && currentSidebarTab == 'reportTab') ? 'text-white bg-primary active' : '{{ Request::is('report*') ? 'active' : '' }}'"
+          class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2">
           <span class="sr-only">Toggle message panel</span>
           <i class="fa-solid fa-book-open-reader text-xl mx-1" style="padding: 2px"></i>
         </button>
         <!-- Download button -->
-        <button @click="(isSidebarOpen && currentSidebarTab == 'downloadTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'downloadTab'" class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2" :class="(isSidebarOpen && currentSidebarTab == 'downloadTab') ? 'text-white bg-primary' : 'text-gray-500 bg-white'">
+        <button 
+              @click="(isSidebarOpen && currentSidebarTab == 'downloadTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'downloadTab'"
+              :class="(isSidebarOpen && currentSidebarTab == 'downloadTab') ? 'text-white bg-primary active' : '{{ Request::is('download*') ? 'active' : '' }}'"
+              class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2">
           <span class="sr-only">Toggle notifications panel</span>
           <i class="fa-solid fa-print text-xl mx-1" style="padding: 2px"></i>
         </button>
 
         <!-- admin button -->
-        <button @click="(isSidebarOpen && currentSidebarTab == 'adminTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'adminTab'" class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2" :class="(isSidebarOpen && currentSidebarTab == 'adminTab') ? 'text-white bg-primary' : 'text-gray-500 bg-white'">
-          <span class="sr-only">Toggle message panel</span>
-          <i class="fa-solid fa-user-tie text-xl mx-1" style="padding: 2px"></i>
-        </button>
+        @if (Auth::user()->role == 'admin')
+          <button 
+              @click="(isSidebarOpen && currentSidebarTab == 'adminTab') ? isSidebarOpen = false : isSidebarOpen = true; currentSidebarTab = 'adminTab'"
+              :class="(isSidebarOpen && currentSidebarTab == 'adminTab') ? 'text-white bg-primary active' : '{{ Request::is('admins*') ? 'active' : '' }}'"
+              class="p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2">
+              <span class="sr-only">Toggle message panel</span>
+              <i class="fa-solid fa-user-tie text-xl mx-1" style="padding: 2px"></i>
+          </button>
+        @endif
       </div>
 
       <!-- User avatar -->
@@ -199,7 +213,7 @@
         </div>
         <h2 class="text-xl text-center pb-2">Admin</h2>
         <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-          <a href="#" class="flex items-center w-full space-x-2 text-white rounded-lg bg-primary">
+          <a href="/admins/users" class="flex items-center w-full space-x-2 text-white rounded-lg bg-primary">
             <span aria-hidden="true" class="p-2 rounded-lg bg-primary-dark">
               <i class="fa-solid fa-users-gear text-xl w-7" style="padding: 2px"></i>
             </span>

@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cscredit;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class CscreditController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('admin.users.index');
     }
 
     /**
@@ -34,7 +34,7 @@ class CscreditController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cscredit $cscredit)
+    public function show(User $user)
     {
         //
     }
@@ -42,7 +42,7 @@ class CscreditController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cscredit $cscredit)
+    public function edit(User $user)
     {
         //
     }
@@ -50,7 +50,7 @@ class CscreditController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cscredit $cscredit)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -58,18 +58,8 @@ class CscreditController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cscredit $cscredit)
+    public function destroy(User $user)
     {
         //
-    }
-
-    public function submissionindex()
-    {
-        return view('cs.submission.index');
-    }
-
-    public function submissioncreate()
-    {
-        return view('users.submission.index');
     }
 }

@@ -56,10 +56,14 @@
       </div>
       <div class="flex flex-col items-center flex-1 p-2 space-y-4">
         <!-- Chart button -->
-        <button class="bg-primary-darker text-white p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2 flex justify-center items-center">
+        <a href="/submission" class="{{ Request::is('submission*') ? 'active' : '' }} p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2 flex justify-center items-center">
+          <span class="sr-only">Toggle sidebar</span>
+          <i class="fa-solid fa-bell text-xl mx-1" style="padding: 2px"></i>
+        </a>
+        <a href="/" class="{{ Request::is('/') ? 'active' : '' }} p-2 transition-colors rounded-lg shadow-md hover:bg-primary-darker hover:text-white focus:outline-none focus:ring focus:ring-primary focus:ring-offset-white focus:ring-offset-2 flex justify-center items-center">
           <span class="sr-only">Toggle sidebar</span>
           <i class="fa-solid fa-chart-line text-xl mx-1" style="padding: 2px"></i>
-        </button>
+        </a>
       </div>
 
       <!-- User avatar -->

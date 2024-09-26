@@ -7,6 +7,7 @@
     <title>Kredit NTG</title>
     @vite('resources/css/app.css')
     @vite('public/assets/css/tailwind.css')
+    @vite('public/assets/css/style.css')
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/525a9b21ee.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet"/>
@@ -21,7 +22,7 @@
 
           <div class="flex flex-1">
             <!-- Main -->
-            <main class="flex items-center justify-center flex-1 px-4 py-8">
+            <main class="flex items-center justify-center flex-1 px-4 ">
               @yield('container')
             </main>
           </div>

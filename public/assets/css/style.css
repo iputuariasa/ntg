@@ -1,3 +1,8 @@
+.active{
+  background-color: var(--color-primary-darker);
+  color: #ffffff;
+}
+
 .balldatabase {
   animation: float 3.5s ease-in-out infinite;
   height: 170px;
