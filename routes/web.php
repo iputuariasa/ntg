@@ -28,6 +28,10 @@ Route::middleware(['auth'])->group(function(){
 
 Route::middleware(['admin'])->group(function(){
     Route::get('/admins/users', [UserController::class, 'index']);
+    Route::post('/admins/users_store', [UserController::class, 'store']);
+    Route::post('/admins/users_import', [UserController::class, 'import']);
+    Route::delete('/admins/users_destroy/{user}', [UserController::class, 'destroy']);
+
 });
 
 Route::middleware(['operator'])->group(function(){

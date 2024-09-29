@@ -8,6 +8,8 @@
     @vite('resources/css/app.css')
     @vite('public/assets/css/tailwind.css')
     @vite('public/assets/css/style.css')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/525a9b21ee.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap" rel="stylesheet"/>
@@ -20,9 +22,9 @@
         <div class="flex flex-col flex-1">
           @include('layouts.navmobile')
 
-          <div class="flex flex-1">
+          <div class="flex flex-1 overflow-auto">
             <!-- Main -->
-            <main class="flex items-center justify-center flex-1 px-4 ">
+            <main class="flex items-center justify-center flex-1 px-4">
               @yield('container')
             </main>
           </div>
@@ -54,6 +56,31 @@
             }
           },
         }
+      }
+
+      // Tambahkan event listener untuk semua tombol dengan class "close-alert"
+      document.querySelectorAll('.close-alert').forEach(button => {
+        button.addEventListener('click', function () {
+          const alertBox = this.closest('.alert'); // Mencari elemen dengan class "alert" terdekat
+          alertBox.style.display = 'none'; // Sembunyikan alert
+        });
+      });
+
+      function deleteRow(id) {
+        swal({
+            title: "Anda Yakin Ingin Menghapus Data Ini?",
+            text: "Data yang dihapus tidak dapat dikembalikan",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                document.getElementById('data-' + id).submit();
+            } else {
+                swal("Data Tidak Jadi Dihapus");
+            }
+        });
       }
     </script>
   </body>
